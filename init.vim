@@ -1,26 +1,36 @@
-" --Plugins--
+"ls /sys/class/backlight/ --Plugins--
 
 call plug#begin()
-
-Plug 'Rigellute/rigel'
-Plug 'itchyny/lightline.vim'
+Plug 'iCyMind/NeoSolarized'
 Plug 'mboughaba/i3config.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
+
+" Ranger stuff
 Plug 'francoiscabrol/ranger.vim'
-" Dep for ranger
 Plug 'rbgrouleff/bclose.vim'
+
+" Go stuff
+Plug 'fatih/vim-go' 
+
 call plug#end()
 
 
 
 " --Visual--
+colorscheme NeoSolarized
+set background=dark
+let g:airline_powerline_fonts = 1
+
+
+let g:airline_extensions = ['fugitiveline', 'branch']
+let g:airline_section_y = '' 
+let g:airline_section_x = '' 
+let g:airline_section_z = '%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
 syntax enable
-
-set termguicolors
-colorscheme rigel
-
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -60,6 +70,7 @@ nnoremap ^ <nop>
 nnoremap gV `[v`]
 
 inoremap jj <esc>
+let mapleader = " "
 
 
 
