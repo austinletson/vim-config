@@ -10,6 +10,7 @@ Plug 'ledger/vim-ledger'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jceb/vim-orgmode'
+Plug 'cespare/vim-toml'   
 
 
 " Go stuff
@@ -81,6 +82,8 @@ noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
+set wrap linebreak nolist
+
 
 " reasonable remaps of escape and colon
 nnoremap ; :
