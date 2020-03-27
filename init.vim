@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
 
 " Plugins For File Types
 Plug 'mboughaba/i3config.vim'
@@ -32,10 +33,11 @@ call plug#end()
 
 set nocompatible
 syntax enable 
-colorscheme dracula
+set background=light
+colorscheme solarized
 highlight Normal ctermbg=NONE
 filetype plugin on
-
+highlight clear LineNr
 
 " ----------
 " --Source--
@@ -47,8 +49,6 @@ source ~/.config/nvim/coc.vim
 
 " source airline configuration
 source ~/.config/nvim/airline.vim
-
-
 " --Visual--
 let python_highlight_all = 1
 filetype plugin on
@@ -99,11 +99,15 @@ nnoremap <leader><space> :nohlsearch<CR>
 " keybinding
 " ----------
 
-" $ and 0 really?
-noremap b ^
-noremap w $
+" Leader remapping
+let mapleader = "\<Space>"
+
+
+"" $ and 0 really?
+noremap B 0
+noremap W $
 nnoremap $ <nop>
-nnoremap ^ <nop>
+nnoremap 0 <nop>
 
 
 " make line wraps better
@@ -119,6 +123,9 @@ nnoremap ; :
 nnoremap : <nop>
 inoremap kj <esc>
 inoremap <esc> <nop>
+
+" Hide highlights
+nnoremap <leader>h :noh<CR>
 
 
 
