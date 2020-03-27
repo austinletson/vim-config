@@ -10,7 +10,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'altercation/vim-colors-solarized'
 
 " Plugins For File Types
 Plug 'mboughaba/i3config.vim'
@@ -34,10 +33,9 @@ call plug#end()
 set nocompatible
 syntax enable 
 set background=light
-colorscheme solarized
+colorscheme dracula 
 highlight Normal ctermbg=NONE
 filetype plugin on
-highlight clear LineNr
 
 " ----------
 " --Source--
