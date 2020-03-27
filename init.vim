@@ -1,45 +1,59 @@
 " --Plugins--
 
 call plug#begin()
-Plug 'mboughaba/i3config.vim'
+" Formating Plugins
+Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
+
+" Visual Plugins
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Plugins For File Types
+Plug 'mboughaba/i3config.vim'
 Plug 'ledger/vim-ledger'
-Plug 'godlygeek/tabular'
-Plug 'jiangmiao/auto-pairs'
 Plug 'jceb/vim-orgmode'
-Plug 'cespare/vim-toml'   
 
-
-" Go stuff
+" Go Plugins
 Plug 'fatih/vim-go' 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" Python stuff
+" Python Plugins 
 Plug 'vim-scripts/indentpython.vim'
 Plug 'hdima/python-syntax'
 
 call plug#end()
 
-" Theme and color
-set nocompatible                                           
-syntax on                                                  
-set termguicolors
+" ---------------
+" Theme and Color
+" ---------------
+
+set nocompatible
+syntax enable 
 colorscheme dracula
 highlight Normal ctermbg=NONE
 filetype plugin on
 
+
+" ----------
+" --Source--
+" ----------
+
+" source coc configuration file
+" coc provides completion for pretty much everything
 source ~/.config/nvim/coc.vim
+
+" source airline configuration
 source ~/.config/nvim/airline.vim
 
 
 " --Visual--
-"syntax enable
-" syntax on
 let python_highlight_all = 1
 filetype plugin on
+
+" Tab nonsense
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -63,16 +77,31 @@ aug end
 "Set no show mode so that light line looks better
 set noshowmode
 
-" --Searching--
+" Highlight last inserted text
+nnoremap gV `[v`]
+
+" Markdown config
+let g:vim_markdown_folding_style_pythonic = 1
+
+
+" ---------
+" Searching
+" ---------
+
 set incsearch
 set hlsearch
 
-" turn off search highlight
+" Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" --Keybinding--
-noremap B ^
-noremap W $
+
+" ----------
+" keybinding
+" ----------
+
+" $ and 0 really?
+noremap b ^
+noremap w $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
@@ -85,17 +114,12 @@ noremap <silent> $ g$
 set wrap linebreak nolist
 
 
-" reasonable remaps of escape and colon
+" Reasonable remaps of escape and colon
 nnoremap ; :
 nnoremap : <nop>
-inoremap jj <esc>
+inoremap kj <esc>
 inoremap <esc> <nop>
 
-" highlight last inserted text
-nnoremap gV `[v`]
-
-" md config
-let g:vim_markdown_folding_style_pythonic = 1
 
 
 "python mappings
