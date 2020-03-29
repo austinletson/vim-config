@@ -24,6 +24,9 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vim-scripts/indentpython.vim'
 Plug 'hdima/python-syntax'
 
+" Fun Plugins
+Plug 'takac/vim-hardtime'
+
 call plug#end()
 
 " ---------------
@@ -125,7 +128,8 @@ inoremap <esc> <nop>
 " Hide highlights
 nnoremap <leader>h :noh<CR>
 
-
+" Hard times
+let g:hardtime_showmsg = 1
 
 "python mappings
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
