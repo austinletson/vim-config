@@ -16,6 +16,9 @@ Plug 'mboughaba/i3config.vim'
 Plug 'ledger/vim-ledger'
 Plug 'jceb/vim-orgmode'
 
+" Search Plugins
+Plug 'junegunn/fzf.vim'
+
 " Go Plugins
 Plug 'fatih/vim-go' 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -84,7 +87,9 @@ nnoremap gV `[v`]
 " Markdown config
 let g:vim_markdown_folding_style_pythonic = 1
 
-
+" Org mode leading stars
+let g:org_heading_shade_leading_stars = 0
+"
 " ---------
 " Searching
 " ---------
@@ -95,21 +100,14 @@ set hlsearch
 " Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-
+nnoremap ff :Files<CR>
 " ----------
 " keybinding
 " ----------
 
 " Leader remapping
 let mapleader = "\<Space>"
-
-
-"" $ and 0 really?
-noremap B 0
-noremap W $
-nnoremap $ <nop>
-nnoremap 0 <nop>
-
+let maplocalleader = "\\"
 
 " make line wraps better
 noremap <silent> k gk
@@ -129,7 +127,7 @@ inoremap <esc> <nop>
 nnoremap <leader>h :noh<CR>
 
 " Hard times
-let g:hardtime_showmsg = 1
+let g:hardtime_showmsg = 0
 
 "python mappings
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
