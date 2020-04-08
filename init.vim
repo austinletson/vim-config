@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
 
 " Plugins For File Types
 Plug 'mboughaba/i3config.vim'
@@ -32,20 +33,22 @@ Plug 'takac/vim-hardtime'
 
 call plug#end()
 
-" ---------------
-" Theme and Color
-" ---------------
+" ################# 
+"  Theme and Color
+" ################# 
 
 set nocompatible
 syntax enable 
 set background=light
 colorscheme dracula 
+"colorscheme solarized
 highlight Normal ctermbg=NONE
 filetype plugin on
+"highlight clear LineNr
 
-" ----------
-" --Source--
-" ----------
+" ########
+"  Source 
+" ########
 
 " source coc configuration file
 " coc provides completion for pretty much everything
@@ -53,7 +56,10 @@ source ~/.config/nvim/coc.vim
 
 " source airline configuration
 source ~/.config/nvim/airline.vim
-" --Visual--
+
+" ########
+"  Visual
+" ########
 let python_highlight_all = 1
 filetype plugin on
 
@@ -87,12 +93,22 @@ nnoremap gV `[v`]
 " Markdown config
 let g:vim_markdown_folding_style_pythonic = 1
 
+" ##########
+"  Org Mode
+" ##########
+
 " Org mode leading stars
 let g:org_heading_shade_leading_stars = 0
-"
-" ---------
-" Searching
-" ---------
+
+" Only todo key word is done (for me no keey word means it is a todo)
+let g:org_todo_keywords=['DONE']
+
+nmap \t <Plug>OrgTodoToggleNonInteractive
+
+
+" ###########
+"  Searching
+" ###########
 
 set incsearch
 set hlsearch
@@ -100,10 +116,9 @@ set hlsearch
 " Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-nnoremap ff :Files<CR>
-" ----------
-" keybinding
-" ----------
+" ############
+"  Keybinding
+" ############
 
 " Leader remapping
 let mapleader = "\<Space>"
@@ -111,6 +126,7 @@ let maplocalleader = "\\"
 
 " make line wraps better
 noremap <silent> k gk
+
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
@@ -123,11 +139,22 @@ nnoremap : <nop>
 inoremap kj <esc>
 inoremap <esc> <nop>
 
+" FZF  project settings
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap ff :Files<CR>
+
 " Hide highlights
 nnoremap <leader>h :noh<CR>
 
 " Hard times
-let g:hardtime_showmsg = 0
+let  g:hardtime_default_on = 1
+let g:hardtime_timeout = 500
+let g:hardtime_showmsg = 1
 
 "python mappings
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
