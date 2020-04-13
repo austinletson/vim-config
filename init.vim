@@ -4,6 +4,7 @@ call plug#begin()
 " Formating Plugins
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 " Visual Plugins
 Plug 'vim-airline/vim-airline'
@@ -100,8 +101,8 @@ let g:vim_markdown_folding_style_pythonic = 1
 " Org mode leading stars
 let g:org_heading_shade_leading_stars = 0
 
-" Only todo key word is done (for me no keey word means it is a todo)
-let g:org_todo_keywords=['DONE']
+" Only todo keywords are WORKING and DONE (for me no key word means it is a todo)
+let g:org_todo_keywords=['WORKING', 'DONE']
 
 nmap \t <Plug>OrgTodoToggleNonInteractive
 
